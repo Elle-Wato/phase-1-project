@@ -1,0 +1,25 @@
+{
+  "classAssignments": [
+    {
+      "id": "1",
+      "classSubject": "Javascript Objects",
+      "title": "Looping Lab",
+      "dueDate": "12/07/2024",
+      "instructions": "Understanding when to use each type of loop"
+    },
+    {
+      "id": "2",
+      "classSubject": "Array Iteration",
+      "title": "Using the Array Find Method",
+      "dueDate": "15/07/2024",
+      "instructions": "Practice using find() to isolate a specific result"
+    },
+    {
+      "id": "3",
+      "classSubject": "JavaScript Operators",
+      "title": "Arithmetic Lab",
+      "dueDate": "18/07/2024",
+      "instructions": "Create variables multiply and random"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ In today's fast-paced educational environment, students often struggle to manage
 
 ---
 
-#### Key Features:
+#### Key Features: MVP
 
 1. **User-Friendly Interface:**
    - Intuitive design for easy task creation and management.

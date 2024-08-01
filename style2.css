@@ -1,0 +1,44 @@
+.card{
+    text-align: center;
+    border: green solid 1px;
+    padding: 1rem;
+    width: 15rem;
+    height: 20rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    box-shadow: 3px 4px #664be0
+  }
+
+  #task-collection {
+    margin: 2rem;
+  }
+
+  .add-hw-tasks {
+    width: 80%
+  }
+
+  .center {
+    border: 5px solid;
+    display: flex;
+    justify-content: center;
+  }
+  /* .data-container{
+    width: 100%;
+    border: 1px solid #dedede;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+
+} */
+
+.main-div{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5rem;
+  padding: 25px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
