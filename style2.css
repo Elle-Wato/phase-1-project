@@ -22,23 +22,17 @@
     display: flex;
     justify-content: center;
   }
-  /* .data-container{
-    width: 100%;
-    border: 1px solid #dedede;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-
-} */
 
 .main-div{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0.5rem;
   padding: 25px;
+  background-color: beige;
 }
 
 *{
     margin: 0;
     padding: 0;
 }
+

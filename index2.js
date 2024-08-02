@@ -47,11 +47,99 @@ const myData = data.classAssignments.map(item => {
   <p> subject: ${item.classSubject}</p>
   <p> title: ${item.title}</p>
   <p> dueDate: ${item.dueDate}</p>
-  <button>Completed Assignment</button>
-  </div> `
+  </div> 
+  <div class="button">
+  <button id='${item.id}'>Complete Assignment</button>
+  </div>`
   
- 
+
 })
+
+const apiUrl = 'http://localhost:3000/classAssignments';
+
+// Function to render assignments
+async function renderAssignments() {
+    try {
+        const response = await fetch(apiUrl);
+        const items = await response.json();
+
+        const assignmentsContainer = document.getElementById('assignmentsContainer');
+        assignmentsContainer.innerHTML = ''; // Clear the container before re-rendering
+
+        const myData = items.map(item => {
+            return `
+                <div style="background:#eee;padding:3px;">
+                    <p>subject: ${item.classSubject}</p>
+                    <p>title: ${item.title}</p>
+                    <p>dueDate: ${item.dueDate}</p>
+                </div>
+                <div class="button">
+                    <button id='${item.id}'>Complete Assignment</button>
+                </div>`;
+        }).join(''); // Join array elements into a single string
+
+        assignmentsContainer.innerHTML = myData;
+    } catch (error) {
+        console.error('Error fetching assignments:', error);
+    }
+}
+
+// Function to handle button click
+async function handleDelete(event) {
+    if (event.target.tagName === 'BUTTON') {
+        const buttonId = event.target.id;
+        
+        try {
+            // Make DELETE request to remove the item
+            await fetch(`${apiUrl}/${buttonId}`, {
+                method: 'DELETE'
+            });
+
+            // Re-render the assignments
+            renderAssignments();
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
+    }
+}
+
+// Initialize the list and event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    // Render the initial list
+    renderAssignments();
+
+    // Attach event listeners to dynamically created buttons
+    document.getElementById('assignmentsContainer').addEventListener('click', handleDelete);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Display the data in the HTML
 const dataContainer = document.getElementById('data-container');
 dataContainer.innerHTML = myData
@@ -94,6 +182,8 @@ function addAssignment(event){
       .then(response => showAssignment(response))
       form.reset()
 }
+
+
 
 const buttonChange = document.querySelector(".submit")
 
