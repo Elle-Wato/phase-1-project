@@ -5,7 +5,7 @@ This repository contains the source code for an Assignment Tracker which is a si
 ## Features
 1. Add Assignment: One can add assignment with details for it to display on the page.
 2. View Assignments: Displays a list of class assignments with details such as subject, title, and due date.
-3. Complete Assignment: Allows users to mark assignments as complete, which removes them from the list.
+3. Delete: Allows users to delete completed assigments, which removes them from the list.
 
 ## Technologies Used.
 - HTML
