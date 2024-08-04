@@ -17,24 +17,17 @@ In today's fast-paced educational environment, students often struggle to manage
 2. Assignment Management:
 
     Create and Edit Assignments: Users can easily add new assignments, specify due dates, attach relevant files or notes, and categorize them by course or subject.
-    Set Reminders: Automated reminders can be set to alert users of approaching deadlines, ensuring timely completion.
-    Track Progress: Students can mark assignments as in-progress, completed, or overdue, providing a clear overview of their workload.
+    
 
-
-3. **Reminders and Notifications:**
-   - Set reminders for important tasks to never miss a deadline.
-   - Receive push notifications to stay informed about upcoming tasks and updates.
-
-
-4. **Task Management:**
+3. **Task Management:**
    - Create, edit, and delete tasks effortlessly.
    - Organize tasks into categories and prioritize with due dates and reminders.
    - Add subtasks and notes for detailed task management.
 
-5. Collaboration and Sharing: 
+4. Collaboration and Sharing: 
 Users can share assignment details or collaborate on group projects, facilitating communication among classmates.
 
-6. **Temporary Data Storage:**
+5. **Temporary Data Storage:**
    - Store data temporarily in a DB.json file to be cleared after 2 days.
 
 ---

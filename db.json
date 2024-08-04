@@ -27,6 +27,27 @@
       "title": "CHEMISTRY",
       "dueDate": "10/3/24",
       "instructions": ""
+    },
+    {
+      "id": "2111",
+      "classSubject": "Javascript",
+      "title": "English",
+      "dueDate": "10/3/24",
+      "instructions": ""
+    },
+    {
+      "id": "4c04",
+      "classSubject": "Django",
+      "title": "website",
+      "dueDate": "10/3/24",
+      "instructions": ""
+    },
+    {
+      "id": "5850",
+      "classSubject": "Computer Science",
+      "title": "Machine Learning",
+      "dueDate": "05/08/2024",
+      "instructions": "Perform data preprocessing and preparation"
     }
   ]
 }

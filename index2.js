@@ -40,38 +40,100 @@ return response.json();
 })
 .then(data => {
 // Handle the JSON data
-console.log(data);
+// console.log(data);
 
 const myData = data.classAssignments.map(item => {
   return `<div style="background:#eee;padding:3px;">
   <p> subject: ${item.classSubject}</p>
   <p> title: ${item.title}</p>
   <p> dueDate: ${item.dueDate}</p>
-  </div> 
-  <div class="button">
+   <div class="button">
   <button id='${item.id}'>Complete Assignment</button>
-  </div>`
+  </div>
+
+  </div> 
+ `
   
 })
+
+// Function to fetch JSON data from the server
+async function fetchData() {
+  try {
+      const response = await fetch('db.json'); // Path to your JSON file
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log('Fetched data:', data.classAssignments); // Debug log
+
+      // Access the classAssignment array from the data object
+      if (!data.classAssignments || !Array.isArray(data.classAssignments)) {
+          console.warn('classAssignment is missing or not an array');
+          return [];
+      }
+      
+      return data.classAssignments;
+  } catch (error) {
+      console.error('Failed to fetch data:', error);
+      return []; // Return an empty array in case of error
+  }
+}
+
+
+// Function to render items
+function renderItems(items) {
+  console.log('Items to render:', items); // Debug log
+  if (!Array.isArray(items)) {
+      console.error('Expected items to be an array but got:', typeof items);
+      return;
+  }
+  const itemContainer = document.getElementById('data-container');
+  itemContainer.innerHTML = ''; // Clear existing items
+  items.forEach(item => {
+      // Create a div for each item
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'item';
+      
+      const itemS = document.createElement("p")
+
+      itemS.textContent = `Subject: ${item.classSubject}`
+      itemDiv.appendChild(itemS)
+
+       const itemT = document.createElement("p")
+       itemT.textContent = `Title: ${item.title}`
+      itemDiv.appendChild(itemT)
+
+       const itemD = document.createElement("p")
+       itemD.textContent = `Due date: ${item.dueDate}`
+      itemDiv.appendChild(itemD)
+
+      // Create delete button
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.onclick = () => deleteItem(item.id, items);
+      itemDiv.appendChild(deleteButton);
+      
+      // Append item div to container
+      itemContainer.appendChild(itemDiv);
+  });
+}
+
+// Function to delete an item by ID
+function deleteItem(id, items) {
+  const updatedItems = items.filter(item => item.id !== id);
+  renderItems(updatedItems);
+  // Optionally, send the updatedItems to the server if needed
+}
+
+// Fetch and render items on page load
+fetchData().then(items => renderItems(items));
+
 
 // Display the data in the HTML
 const dataContainer = document.getElementById('data-container');
 dataContainer.innerHTML = myData
-// dataContainer.innerHTML = JSON.stringify(
-//   data, null, 2); // Pretty-print JSON data
-// })
-// .catch(error => {
-// // Handle any errors
-// console.error('There was a problem with the fetch operation:', error);
+
 }).catch(error => {console.error('There was a problem with the fetch operation:', error)})
-
-
-// function getAssignments(){
-//     fetch("http://localhost:3000/classAssignments")
-//     .then(response => response.json())
-//     .then(data => data.forEach(assignment => showAssignment(assignment)))
-//   }
-
 
   
   const form = document.querySelector(".add-hw-tasks")
@@ -97,20 +159,6 @@ function addAssignment(event){
       form.reset()
 }
 
-
-
-const buttonChange = document.querySelector(".submit")
-
-function mouseEnter(){
-  buttonChange.style.background = 'yellow'
-}
-
-function mouseLeave(){
-  buttonChange.style.background = ''
-}
-
-buttonChange.addEventListener("mouseenter", mouseEnter)
-buttonChange.addEventListener("mouseleave", mouseLeave)
 
 //This variable holds the decision of default of "NO"
 
